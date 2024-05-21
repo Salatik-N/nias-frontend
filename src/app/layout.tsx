@@ -1,9 +1,16 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 import {getGlobalPageMetadata} from "@/data/loaders";
+import { Fira_Code } from "next/font/google";
+import '../styles/index.scss'
 
-const inter = Inter({ subsets: ["latin"] });
+const fira = Fira_Code({ 
+  weight: ['400', '500', '700'],
+  style: ['normal'],
+  subsets: ['latin'],
+  display: 'swap',
+ });
 
 export async function generateMetadata(): Promise<Metadata> {
   const metadata = await getGlobalPageMetadata();
@@ -14,14 +21,21 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+interface ContainerProps {
+    children: React.ReactNode;
+  }  
+
+const RootLayout: React.FC<ContainerProps> = ({ children }) => {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={fira.className}>
+        <Header />
+        <main>
+          {children}
+        </main>
+        <Footer />
+      </body>
     </html>
-  );
+  )
 }
+ export default RootLayout

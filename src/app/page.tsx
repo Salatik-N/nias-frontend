@@ -1,6 +1,6 @@
 import {getGlobalPageData} from "@/data/loaders";
 
-export default async function Home() {
+export default async function Page() {
 
   const globalPageData = await getGlobalPageData()
 
