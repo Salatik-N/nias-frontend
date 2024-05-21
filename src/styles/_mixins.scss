@@ -11,6 +11,7 @@
   text-wrap: nowrap;
   transition: all 300ms;
   font-size: 14px;
+  line-height: 1;
   border-radius: 8px;
   border: 1px solid;
 
@@ -21,22 +22,20 @@
 
 @mixin button-yellow {
   background: $yellow;
-  border-color: $yellow;
-  color: $white;
+  border: none;
+  color: $dark-blue;
   &:hover {
     background: $yellow;
-    border-color: $yellow;
-    color: $white;
+    color: $dark-blue;
   }
 }
 
 @mixin button-gray {
   background: $dark-gray;
-  border-color: $dark-gray;
+  border: none;
   color: $white;
   &:hover {
     background: $dark-gray;
-    border-color: $dark-gray;
     color: $white;
   }
 }
