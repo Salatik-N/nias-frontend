@@ -1,0 +1,61 @@
+.visuallyhidden {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(0 0 99.9% 99.9%);
+  clip-path: inset(0 0 99.9% 99.9%);
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
+  padding: 0;
+  border: 0;
+}
+
+body {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 27px;
+  color: $gray;
+  overflow-x: hidden;
+  min-width: 320px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  background-color: transparent;
+}
+
+h1,
+.h1 {
+  display: block;
+  font-size: 62px;
+  line-height: 81.34px;
+  font-weight: 400;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: $white;
+}
+
+a {
+  text-decoration: none;
+  transition: all 300ms;
+
+  &.link-yellow:hover {
+    color: $yellow;
+  }
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+section {
+  overflow: hidden;
+  padding-top: 35px;
+  padding-bottom: 35px;
+  &.big-section {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+}
