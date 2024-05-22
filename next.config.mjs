@@ -25,7 +25,8 @@ const nextConfig = {
     ],
   },
   sassOptions: {
-    additionalData: `@import "${path.join(__dirname, 'src/styles/_variables.scss')}";`,
+    includePaths: [path.join(__dirname, 'src/styles')],
+    prependData: `@import "src/styles/_variables.scss";`,
   },
   webpack(config) {
     config.module.rules.push({
