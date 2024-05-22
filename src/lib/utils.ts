@@ -1,3 +1,5 @@
+import {AxiosRequestConfig} from 'axios';
+
 export function flattenAttributes(data: any): any {
     // Check if data is a plain object; return as is if not
     if (
@@ -47,4 +49,33 @@ export function getStrapiMedia(url: string | null) {
     if (url.startsWith("data:")) return url;
     if (url.startsWith("http") || url.startsWith("//")) return url;
     return `${getStrapiURL()}${url}`;
+}
+
+export const getHeaders = (token: string | null, contentType: string = 'application/json'): AxiosRequestConfig['headers'] => {
+    const headers: AxiosRequestConfig['headers'] = {
+        'Content-Type': contentType
+    };
+
+    if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+    }
+
+    return headers;
+};
+
+export function objectToFormData(obj: any, form = new FormData(), namespace = '') {
+    for (let property in obj) {
+        if (!obj.hasOwnProperty(property)) {
+            continue;
+        }
+
+        const formKey = namespace ? `${namespace}[${property}]` : property;
+
+        if (typeof obj[property] === 'object' && !(obj[property] instanceof File)) {
+            objectToFormData(obj[property], form, formKey);
+        } else {
+            form.append(formKey, obj[property]);
+        }
+    }
+    return form;
 }

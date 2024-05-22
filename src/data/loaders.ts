@@ -1,62 +1,113 @@
-import { flattenAttributes, getStrapiURL } from '@/lib/utils'
+import {flattenAttributes, getHeaders, getStrapiURL, objectToFormData} from '@/lib/utils'
+import axios, {AxiosRequestConfig, AxiosResponse} from 'axios';
 
 const baseUrl = getStrapiURL()
 
-async function fetchData(url: string) {
-  const authToken = null
-  const headers = {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${authToken}`,
-    },
-  }
-
-  try {
-    const response = await fetch(url, authToken ? headers : {})
-    const data = await response.json()
-    return flattenAttributes(data)
-  } catch (error) {
-    console.error('Error fetching data:', error)
-    throw error
-  }
+interface StrapiGetRequestParams {
+    [key: string]: any;
 }
+
+interface StrapiPostRequestData {
+    [key: string]: any;
+}
+
+enum contentType {
+    json = 'application/json',
+    form = 'multipart/form-data'
+}
+
+const strapiGetRequest = async <T>(url: string, params: StrapiGetRequestParams = {}, token: string | null = null, type = contentType.json): Promise<T> => {
+    try {
+        const config: AxiosRequestConfig = {
+            params,
+            headers: getHeaders(token, type)
+        };
+
+        const response: AxiosResponse<T> = await axios.get(baseUrl + url, config);
+        return flattenAttributes(response.data);
+    } catch (error) {
+        console.error('Error making GET request to Strapi:', error);
+        throw error;
+    }
+};
+
+const strapiPostRequest = async <T>(url: string, data: StrapiPostRequestData = {}, token: string | null = null, type = contentType.json): Promise<T> => {
+    try {
+        const config: AxiosRequestConfig = {
+            headers: getHeaders(token, type)
+        };
+
+        const response: AxiosResponse<T> = await axios.post(baseUrl + url, data, config);
+        return response.data;
+    } catch (error) {
+        console.error('Error making POST request to Strapi:', error);
+        throw error;
+    }
+};
 
 export async function getGlobalPageData() {
-  // noStore();
-  const url = new URL(
-    '/api/global?populate[header][populate][route]=true&populate[header][populate][socialLink]=true',
-    baseUrl
-  )
+    const url = '/api/global'
 
-  return fetchData(url.href)
+    const params = {
+        'populate[header][populate][route]': true,
+        'populate[header][populate][socialLink]': true
+    };
+
+    return await strapiGetRequest(url, params)
 }
+
 export async function getGlobalPageMetadata() {
-  const url = new URL('/api/global', baseUrl)
+    const url = '/api/global'
 
-  return await fetchData(url.href)
+    return await strapiGetRequest(url)
 }
+
 export async function getContactPageData() {
-  const url = new URL('/api/contact?populate[socialLink]=true', baseUrl)
+    const url = '/api/contact'
 
-  return await fetchData(url.href)
+    const params = {
+        'populate[socialLink]': true
+    }
+
+    return await strapiGetRequest(url, params)
 }
-export async function getAboutPageData() {
-  const url = new URL(
-    '/api/about?populate[skills][populate][skill]=true',
-    baseUrl
-  )
 
-  return await fetchData(url.href)
+export async function getAboutPageData() {
+    const url = '/api/about'
+
+    const params = {
+        'populate[skills][populate][skill]': true
+    }
+
+    return await strapiGetRequest(url, params)
 }
 
 export async function getProjectsData() {
-  const url = new URL('/api/projects', baseUrl)
-
-  return await fetchData(url.href)
+    const url = '/api/projects'
+    return await strapiGetRequest(url)
 }
+
 export async function getServicesData() {
-  const url = new URL('/api/services', baseUrl)
+    const url = '/api/services'
 
-  return await fetchData(url.href)
+    return await strapiGetRequest(url)
 }
+
+export async function setContactFormData(payload: any) {
+    const url = '/api/contact-form'
+
+    const {name, email, message, document} = payload
+
+    const formData = new FormData();
+
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('message', message);
+
+    if (document) {
+        formData.append('document', document);
+    }
+
+    return await strapiPostRequest(url, formData, null, contentType.form)
+}
+

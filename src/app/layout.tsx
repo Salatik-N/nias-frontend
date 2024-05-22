@@ -1,6 +1,6 @@
 import '../styles/index.scss'
 import type { Metadata } from 'next'
-import Header from '../components/Header'
+import Header from '../components/custom/Header'
 import { getGlobalPageMetadata } from '@/data/loaders'
 import { Fira_Code } from 'next/font/google'
 
