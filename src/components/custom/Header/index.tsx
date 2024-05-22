@@ -55,7 +55,7 @@ const Header = () => {
                 ))}
             </ul>
           </nav>
-          <button className="button button-yellow">Contact us</button>
+          <Link href="/contact-us" className="button button-yellow">Contact us</Link>
         </div>
       </Container>
     </header>
