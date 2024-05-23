@@ -1,6 +1,11 @@
+import React from 'react'
+
 import Container from '@/components/custom/Container'
 import styles from './styles.module.scss'
 import Link from 'next/link'
+import Button from '@/components/ui/Button'
+
+import styles from './page.module.scss'
 
 export default async function Page() {
   return (
@@ -21,9 +26,9 @@ export default async function Page() {
             <span className="text-green">githubLink</span> =
             <span className="text-brown">“https://github.com/Salatik-N”</span>
           </Link>
-          <Link href="/projects" className="button button-yellow">
+          <Button variant="yellow" href="/projects">
             Projects
-          </Link>
+          </Button>
         </div>
         <div className={styles.rowContentBlockRight}></div>
       </div>
