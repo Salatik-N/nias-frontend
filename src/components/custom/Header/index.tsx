@@ -6,7 +6,7 @@ import { getGlobalPageData } from '@/data/loaders'
 import Container from '../Container'
 import Link from 'next/link'
 import Logo from '@public/logo.svg'
-import styles from './style.module.scss'
+import styles from './styles.module.scss'
 
 interface NavigationItem {
   id: number
@@ -23,7 +23,6 @@ const Header = () => {
     const fetchData = async () => {
       const globalPageData = await getGlobalPageData()
       setHeaderNav(globalPageData.header.route)
-      console.log(globalPageData.header.route)
     }
 
     fetchData()
@@ -41,21 +40,19 @@ const Header = () => {
               {headerNav &&
                 headerNav.map((item) => (
                   <li key={item.id}>
-                    {item.isExternal ? (
-                      <Link
-                        href={item.url}
-                        className={pathname === item.url ? styles.active : ''}
-                      >
-                        {item.text}
-                      </Link>
-                    ) : (
-                      <Link href={item.url}>{item.text}</Link>
-                    )}
+                    <Link
+                      href={item.url}
+                      className={`${styles.link} ${pathname === item.url ? styles.active : ''}`}
+                    >
+                      {item.text}
+                    </Link>
                   </li>
                 ))}
             </ul>
           </nav>
-          <Link href="/contact-us" className="button button-yellow">Contact us</Link>
+          <Link href="/contact-us" className="button button-yellow">
+            Contact us
+          </Link>
         </div>
       </Container>
     </header>
