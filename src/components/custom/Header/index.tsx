@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { getGlobalPageData } from '@/data/loaders'
-import Container from '../Container'
+import Container from '@/components/custom/Container'
 import Link from 'next/link'
 import Logo from '@public/logo.svg'
 import styles from './styles.module.scss'

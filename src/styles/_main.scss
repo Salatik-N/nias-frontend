@@ -115,3 +115,10 @@ img {
     color: $brown;
   }
 }
+
+/* Card  */
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
