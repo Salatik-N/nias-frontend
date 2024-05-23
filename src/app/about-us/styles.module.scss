@@ -1,0 +1,109 @@
+.pageTitle {
+  display: block;
+  margin-top: 90px;
+  margin-bottom: 36px;
+  color: $white;
+}
+
+.rowContentBlock {
+  display: flex;
+  gap: 150px;
+  align-items: center;
+
+  &Left {
+    flex: 1 0 calc(50% - 75px);
+    max-width: calc(50% - 75px);
+
+    ol {
+      counter-reset: item;
+    }
+    li {
+      display: flex;
+      gap: 40px;
+    }
+    li:before {
+      content: counter(item);
+      display: block;
+      counter-increment: item;
+    }
+  }
+
+  &Right {
+    flex: 1 0 calc(50% - 75px);
+    max-width: calc(50% - 75px);
+    background: $blue;
+    padding: 45px 55px;
+    min-height: 500px;
+    border: 1px solid $border-color;
+    border-radius: $border-radius-base;
+
+    .skillItem {
+      margin-top: 20px;
+
+      &Header {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        margin-bottom: 10px;
+
+        .title {
+          font-size: 16px;
+          list-style: 20.99px;
+          color: $yellow;
+        }
+
+        .rate {
+          display: flex;
+          gap: 24px;
+
+          .rateItem {
+            position: relative;
+            width: 8px;
+            height: 8px;
+            background: $yellow;
+            border-radius: 50px;
+            opacity: 30%;
+
+            &::before {
+              content: '';
+              position: absolute;
+              background: $yellow;
+              width: 16px;
+              height: 16px;
+              opacity: 20%;
+              border-radius: 50px;
+              left: calc(50% - 8px);
+              top: calc(50% - 8px);
+            }
+
+            &::after {
+              content: '';
+              position: absolute;
+              background: $yellow;
+              width: 24px;
+              height: 24px;
+              opacity: 10%;
+              border-radius: 50px;
+              left: calc(50% - 12px);
+              top: calc(50% - 12px);
+            }
+          }
+
+          .rateFilled {
+            opacity: 1;
+          }
+        }
+      }
+
+      &Text {
+        padding-left: 36px;
+        font-size: 16px;
+        list-style: 20.99px;
+
+        p:not(:last-child) {
+          margin-bottom: 12px;
+        }
+      }
+    }
+  }
+}

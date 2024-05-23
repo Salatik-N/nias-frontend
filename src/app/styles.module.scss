@@ -1,0 +1,33 @@
+.rowContentBlock {
+  display: flex;
+  gap: 110px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  &Left {
+    flex: 1 0 calc(50% - 55px);
+    max-width: calc(50% - 55px);
+
+    .superhead {
+      color: $white;
+    }
+
+    .subtitle {
+      margin-top: -10px;
+      margin-bottom: 60px;
+    }
+
+    .gitLink {
+      display: block;
+      margin-top: 10px;
+      margin-bottom: 30px;
+      color: $white;
+    }
+  }
+
+  &Right {
+    flex: 1 0 calc(50% - 55px);
+    max-width: calc(50% - 55px);
+  }
+}

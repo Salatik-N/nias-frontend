@@ -98,96 +98,20 @@ img {
   }
 }
 
-// form {
-//   .form-row {
-//     display: flex;
-//     gap: 20px;
-//     @include _1024 {
-//       flex-direction: column;
-//     }
+.text {
+  &-yellow {
+    color: $yellow;
+  }
 
-//     .form-input {
-//       flex: 1 0 calc(50% - 10px);
-//       max-width: calc(50% - 10px);
-//       @include _1024 {
-//         flex: 1 0 100%;
-//         max-width: 100%;
-//       }
-//     }
-//   }
+  &-light-blue {
+    color: $light-blue;
+  }
 
-//   p {
-//     margin-bottom: 0;
-//   }
+  &-green {
+    color: $green;
+  }
 
-//   input:not([type='submit']),
-//   select,
-//   textarea {
-//     width: 100%;
-//     padding: 15px 20px;
-//     transition: all 300ms;
-//     font-size: 16px;
-//     border: 1px solid map-get($theme-colors, 'light-gray');
-//     color: map-get($theme-colors, 'dark-gray');
-//     text-transform: uppercase;
-
-//     &::placeholder {
-//       color: map-get($theme-colors, 'dark-gray');
-//     }
-//   }
-
-//   .form-row,
-//   .form-textarea {
-//     margin-bottom: 20px;
-//   }
-
-//   textarea {
-//     height: 150px;
-//   }
-
-//   select {
-//     -moz-appearance: none;
-//     -webkit-appearance: none;
-//     appearance: none;
-//     background-image: linear-gradient(45deg, transparent 50%, gray 50%),
-//       linear-gradient(135deg, gray 50%, transparent 50%);
-//     background-position:
-//       calc(100% - 20px) 25px,
-//       calc(100% - 15px) 25px;
-//     background-size:
-//       5px 5px,
-//       5px 5px;
-//     background-repeat: no-repeat;
-
-//     &:focus {
-//       background-image: linear-gradient(45deg, gray 50%, transparent 50%),
-//         linear-gradient(135deg, transparent 50%, gray 50%);
-//       background-position:
-//         calc(100% - 15px) 25px,
-//         calc(100% - 20px) 25px;
-//       background-size:
-//         5px 5px,
-//         5px 5px,
-//         1px 1.5em;
-//       background-repeat: no-repeat;
-//       outline: 0;
-//     }
-//   }
-
-//   .button {
-//     @include button-black;
-//   }
-
-//   .wpcf7-not-valid-tip {
-//     font-size: 16px;
-//     line-height: 20px;
-//   }
-
-//   &.invalid .wpcf7-response-output {
-//     margin: 20px 0 0;
-//     padding: 12px 18px;
-//     width: 100%;
-//     font-size: 14px;
-//     line-height: 18px;
-//   }
-// }
+  &-brown {
+    color: $brown;
+  }
+}
