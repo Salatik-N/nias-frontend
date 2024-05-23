@@ -1,0 +1,35 @@
+.pageTitle {
+  display: block;
+  font-size: 16px;
+  line-height: 21px;
+  color: $white;
+  padding-top: 90px;
+}
+
+.contactUs {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 110px;
+  padding-top: 65px;
+
+  &Left {
+    max-width: calc(100% - 675px);
+    flex: 1 0 calc(100% - 675px);
+
+    position: absolute;
+    top: 200px;
+
+    & p {
+      margin-bottom: 20px;
+    }
+  }
+
+  &Right {
+    margin-left: auto;
+    flex: 1 0 565px;
+    max-width: 565px;
+  }
+}

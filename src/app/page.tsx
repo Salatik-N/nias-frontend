@@ -1,11 +1,10 @@
 import React from 'react'
 
 import Container from '@/components/custom/Container'
-import styles from './styles.module.scss'
 import Link from 'next/link'
 import Button from '@/components/ui/Button'
 
-import styles from './page.module.scss'
+import styles from './styles.module.scss'
 
 export default async function Page() {
   return (

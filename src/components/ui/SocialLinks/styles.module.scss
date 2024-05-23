@@ -1,0 +1,14 @@
+.socialLinks{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  &Item{
+    display: block;
+    font-size: 30px;
+
+    &:hover{
+      color: $yellow;
+    }
+  }
+}
