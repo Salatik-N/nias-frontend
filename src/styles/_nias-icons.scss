@@ -1,0 +1,52 @@
+@font-face {
+  font-family: 'nias';
+  src: url('../../public/icon-fonts/nias.eot?cr5csq');
+  src:
+    url('../../public/icon-fonts/nias.eot?cr5csq#iefix')
+      format('embedded-opentype'),
+    url('../../public/icon-fonts/nias.ttf?cr5csq') format('truetype'),
+    url('../../public/icon-fonts/nias.woff?cr5csq') format('woff'),
+    url('../../public/icon-fonts/nias.svg?cr5csq#gpo') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+@mixin icon-font {
+  font-family: 'nias' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^='icon-']::before,
+[class*=' icon-']::before {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'nias' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-telegram:before {
+  content: '\e900';
+}
+.icon-whatsapp:before {
+  content: '\e901';
+}
