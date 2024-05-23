@@ -22,10 +22,15 @@
 
 @mixin button-yellow {
   background: $yellow;
-  border: none;
+  border-color: $yellow;
   color: $dark-blue;
   &:hover {
-    background: $yellow;
+    background: transparent;
+    color: $white;
+    border-color: $white;
+  }
+  &:active {
+    background: $white;
     color: $dark-blue;
   }
 }
@@ -35,8 +40,8 @@
   border: none;
   color: $white;
   &:hover {
-    background: $dark-gray;
-    color: $white;
+    background: $yellow;
+    color: $dark-blue;
   }
 }
 
@@ -45,8 +50,8 @@
   border-color: $white;
   color: $white;
   &:hover {
-    background: transparent;
+    background: $white;
     border-color: $white;
-    color: $white;
+    color: $dark-blue;
   }
 }
