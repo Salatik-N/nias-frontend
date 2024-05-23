@@ -10,6 +10,7 @@
   border-radius: $border-radius-base;
   border: 1px solid $border-color;
 
+
   .formGroup {
     display: flex;
     flex-direction: column;
@@ -68,26 +69,17 @@
     display: flex;
     gap: 13px;
 
-    .addFileButton, .submitButton {
-      font-weight: 450;
-      font-size: 14px;
-      width: 100%;
-      line-height: 18.37px;
-      cursor: pointer;
-      border-radius: $border-radius-base;
-      padding: 10px;
     }
 
     .addFileButton {
       max-width: 100px;
-      color: #FFFFFF;
-      border: 1px solid #FFFFFF;
+      flex: 1 0 100px;
     }
 
     .submitButton {
-      background: #F7C700;
-      max-width: 256px;
+      //background: #F7C700;
+      max-width: calc(100% - 113px);
+      flex: 1 0 calc(100% - 113px);
     }
-  }
 
 }

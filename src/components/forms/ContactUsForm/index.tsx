@@ -1,9 +1,10 @@
 'use client'
 
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from 'formik'
 import * as Yup from 'yup'
 import { setContactFormData } from '@/data/loaders'
+import Button from '../../ui/Button'
 
 import styles from './styles.module.scss'
 
@@ -16,6 +17,7 @@ interface FormValues {
 
 const ContactForm = () => {
   const fileInputRef = useRef(null)
+  const [isFetching, setIsFetching] = useState(false)
 
   const initialValues: FormValues = {
     name: '',
@@ -38,8 +40,10 @@ const ContactForm = () => {
     values: FormValues,
     { resetForm }: FormikHelpers<FormValues>
   ) => {
+    setIsFetching(true)
     await setContactFormData(values)
-    resetForm() // Сброс формы после успешной отправки
+    resetForm()
+    setIsFetching(false)
   }
 
   return (
@@ -105,16 +109,21 @@ const ContactForm = () => {
             }}
           />
           <div className={styles.actions}>
-            <button
+            <Button
               className={styles.addFileButton}
-              type="button"
+              variant="white"
               onClick={handleFileInputClick}
             >
               File
-            </button>
-            <button className={styles.submitButton} type="submit">
+            </Button>
+            <Button
+              className={styles.submitButton}
+              variant="yellow"
+              type="submit"
+              isLoading={isFetching}
+            >
               Submit
-            </button>
+            </Button>
           </div>
         </Form>
       )}
