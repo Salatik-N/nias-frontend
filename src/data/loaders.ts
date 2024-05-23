@@ -2,7 +2,6 @@ import {
   flattenAttributes,
   getHeaders,
   getStrapiURL,
-  objectToFormData,
 } from '@/lib/utils'
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 
@@ -86,6 +85,7 @@ export async function getContactPageData() {
 
   const params = {
     'populate[socialLink]': true,
+    'populate[seo_data]': true,
   }
 
   return await strapiGetRequest(url, params)
