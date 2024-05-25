@@ -17,7 +17,7 @@ const SocialLinks: React.FC<SocialLinksProps> = ({ socialLinks }) => {
           target={link.isExternal ? '_blank' : '_self'}
           rel={link.isExternal ? 'noopener noreferrer' : ''}
         >
-          <i className={`icon-${link.icon}`} />
+          <i className={`icon-${link.icon.toLowerCase()}`} />
         </a>
       ))}
     </div>
