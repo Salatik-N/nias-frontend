@@ -1,8 +1,4 @@
-import {
-  flattenAttributes,
-  getHeaders,
-  getStrapiURL,
-} from '@/lib/utils'
+import { flattenAttributes, getHeaders, getStrapiURL } from '@/lib/utils'
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 
 const baseUrl = getStrapiURL()
@@ -103,18 +99,19 @@ export async function getAboutPageData() {
 
 export async function getProjectsData() {
   const url = '/api/projects'
-  return await strapiGetRequest(url)
+
+  const params = {
+    'populate[previewImage]': true,
+    'populate[project_types]': true,
+  }
+
+  return await strapiGetRequest(url, params)
 }
 
 export async function getProjectsPageData() {
   const url = '/api/projects-page'
 
-  const params = {
-    'populate[projects][populate][previewImage]': true,
-    'populate[projects][populate][project_types]': true,
-  }
-
-  return await strapiGetRequest(url, params)
+  return await strapiGetRequest(url)
 }
 
 export async function getServicesData() {

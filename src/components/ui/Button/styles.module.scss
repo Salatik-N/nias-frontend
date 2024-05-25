@@ -1,4 +1,4 @@
-@import "mixins";
+@import 'mixins';
 
 .yellow {
   @include button;
@@ -12,7 +12,7 @@
 
 .white {
   @include button;
-  @include button-white
+  @include button-white;
 }
 
 .loader {

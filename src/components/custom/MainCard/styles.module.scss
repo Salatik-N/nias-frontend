@@ -1,2 +1,45 @@
 .card {
+  flex: 1 0 calc(100% / 3 - 20px);
+  max-width: calc(100% / 3 - 20px);
+  display: flex;
+  flex-direction: column;
+
+  &Title {
+    display: block;
+    font-size: 16px;
+    line-height: 20.99px;
+    margin-bottom: 15px;
+    color: $yellow;
+  }
+
+  &Content {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: $border-radius-base;
+    background: $dark-blue;
+    border: 1px solid $border-color;
+
+    .image {
+      border-radius: $border-radius-base $border-radius-base 0 0;
+      height: 260px;
+    }
+
+    .info {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      flex: 1 0 auto;
+      padding: 15px 20px;
+      border-top: 1px solid $border-color;
+
+      .description {
+        margin-bottom: 15px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+    }
+  }
 }
