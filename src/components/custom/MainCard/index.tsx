@@ -60,7 +60,9 @@ const MainCard: React.FC<MainCardProps> = ({ card, type }) => {
               {card.url}
             </Button>
           ) : (
-            <Button variant="gray">Contact us</Button>
+            <Button href="contact-us" variant="gray">
+              Contact us
+            </Button>
           )}
         </div>
       </div>

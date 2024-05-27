@@ -44,6 +44,60 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-php:before {
+  content: '\e902';
+}
+.icon-design:before {
+  content: '\e903';
+}
+.icon-seo:before {
+  content: '\e904';
+}
+.icon-ads:before {
+  content: '\e905';
+}
+.icon-nextjs:before {
+  content: '\e906';
+}
+.icon-nodejs:before {
+  content: '\e907';
+}
+.icon-graphql:before {
+  content: '\e908';
+}
+// .icon-scss .path1:before {
+//   content: '\e909';
+//   color: rgb(96, 123, 150);
+// }
+// .icon-scss .path2:before {
+//   content: '\e90a';
+//   margin-left: -1em;
+//   color: rgb(1, 12, 21);
+// }
+.icon-javascript:before {
+  content: '\e90b';
+}
+.icon-typescript:before {
+  content: '\e90c';
+}
+// .icon-strapi:before {
+//   content: '\e90d';
+// }
+// .icon-strapi:before {
+//   content: '\e90e';
+// }
+// .icon-strapi .path3:before {
+//   content: '\e90f';
+// }
+.icon-wordpress:before {
+  content: '\e910';
+}
+.icon-html:before {
+  content: '\e911';
+}
+.icon-react:before {
+  content: '\e912';
+}
 .icon-telegram:before {
   content: '\e900';
 }

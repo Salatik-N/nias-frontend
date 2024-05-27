@@ -5,12 +5,12 @@
   width: 100%;
   position: fixed;
   z-index: 999;
-  border-bottom: 1px solid $border-color;
 
   .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid $border-color;
 
     .logo {
       display: flex;

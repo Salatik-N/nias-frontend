@@ -1,0 +1,73 @@
+.filter {
+  background: $blue;
+  padding: 20px;
+
+  &Title {
+    display: block;
+    font-size: 16px;
+    line-height: 20.99px;
+    font-weight: 400;
+    color: $white;
+    text-transform: capitalize;
+    margin-bottom: 20px;
+  }
+
+  &Item {
+    label {
+      font-size: 16px;
+      line-height: 20.99px;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      cursor: pointer;
+      &:not(last-child) {
+        margin-bottom: 16px;
+      }
+
+      .customCheckbox {
+        position: relative;
+        height: 18px;
+        width: 18px;
+        border: 1px solid $gray;
+        border-radius: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+          display: none;
+          width: 12px;
+        }
+      }
+
+      input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+
+        &:checked ~ .customCheckbox {
+          background: $gray;
+
+          svg {
+            display: block;
+          }
+        }
+      }
+
+      i {
+        display: flex;
+        font-size: 24px;
+        margin-left: 24px;
+        margin-right: 10px;
+      }
+    }
+  }
+
+  button {
+    margin-top: 30px;
+    width: 100%;
+  }
+}

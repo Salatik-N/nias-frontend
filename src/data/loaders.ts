@@ -108,6 +108,12 @@ export async function getProjectsData() {
   return await strapiGetRequest(url, params)
 }
 
+export async function getProjectTypes() {
+  const url = '/api/project-types'
+
+  return await strapiGetRequest(url)
+}
+
 export async function getProjectsPageData() {
   const url = '/api/projects-page'
 
