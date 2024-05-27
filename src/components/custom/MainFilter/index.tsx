@@ -8,7 +8,10 @@ interface ProjectType {
 }
 
 interface ProjectTypes {
-  projectTypes: ProjectType[]
+  projectTypes: {
+    data: ProjectType[]
+  }
+  type: string
 }
 
 const MainFilter: React.FC<ProjectTypes> = ({ projectTypes, type }) => {
@@ -18,10 +21,10 @@ const MainFilter: React.FC<ProjectTypes> = ({ projectTypes, type }) => {
       <ul>
         {projectTypes?.data.map((item) => (
           <li key={item.id} className={styles.filterItem}>
-            <label htmlFor={item.id}>
+            <label htmlFor={item.id.toString()}>
               <input
                 type="checkbox"
-                id={item.id}
+                id={item.id.toString()}
                 data-project-type={item.type}
               />
               <div className={styles.customCheckbox}>
