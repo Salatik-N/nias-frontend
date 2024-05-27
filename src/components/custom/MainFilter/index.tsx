@@ -8,18 +8,18 @@ interface ProjectType {
 }
 
 interface ProjectTypes {
-  projectTypes: {
+  filterTypes: {
     data: ProjectType[]
   }
   type: string
 }
 
-const MainFilter: React.FC<ProjectTypes> = ({ projectTypes, type }) => {
+const MainFilter: React.FC<ProjectTypes> = ({ filterTypes, type }) => {
   return (
     <div className={styles.filter}>
       <span className={styles.filterTitle}>{type}</span>
       <ul>
-        {projectTypes?.data.map((item) => (
+        {filterTypes?.data?.map((item) => (
           <li key={item.id} className={styles.filterItem}>
             <label htmlFor={item.id.toString()}>
               <input
