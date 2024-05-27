@@ -47,7 +47,7 @@ export default function ServicesRoute() {
       <div className="card-list">
         {projectsData?.length ? (
           projectsData.map((card) => (
-            <MainCard key={card.id} card={card} type="project" />
+            <MainCard key={card.id} card={card} type="services" />
           ))
         ) : (
           <Loader theme="light" width={50} height={50} />
