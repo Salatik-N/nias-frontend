@@ -123,6 +123,23 @@ export async function getProjectsPageData() {
 export async function getServicesData() {
   const url = '/api/services'
 
+  const params = {
+    'populate[previewImage]': true,
+    'populate[service_types]': true,
+  }
+
+  return await strapiGetRequest(url, params)
+}
+
+export async function getServiceTypes() {
+  const url = '/api/service-types'
+
+  return await strapiGetRequest(url)
+}
+
+export async function getServicesPageData() {
+  const url = '/api/services-page'
+
   return await strapiGetRequest(url)
 }
 

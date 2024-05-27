@@ -58,7 +58,7 @@ export default function ProjectsRoute() {
     <Container>
       <h1 className="visuallyhidden">hiden title</h1>
       <div className="card-block">
-        <MainFilter projectTypes={projectTypes} type="project" />
+        <MainFilter filterTypes={projectTypes} type="project" />
         <div className="card-list">
           {projectsData?.length ? (
             projectsData.map((card) => (
