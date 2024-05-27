@@ -30,7 +30,9 @@ const MainFilter: React.FC<ProjectTypes> = ({ filterTypes, type }) => {
               <div className={styles.customCheckbox}>
                 <Checkbox />
               </div>
-              <i className={`icon-${item.type.toLowerCase()}`} />
+              {type === 'project' && (
+                <i className={`icon-${item.type.toLowerCase()}`} />
+              )}
               {item.type}
             </label>
           </li>
