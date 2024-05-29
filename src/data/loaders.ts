@@ -26,6 +26,13 @@ const strapiGetRequest = async <T>(
     const config: AxiosRequestConfig = {
       params,
       headers: getHeaders(token, type),
+      paramsSerializer: (params) => {
+        const searchParams = new URLSearchParams()
+        for (const key in params) {
+          searchParams.append(key, params[key])
+        }
+        return searchParams.toString()
+      },
     }
 
     const response: AxiosResponse<T> = await axios.get(baseUrl + url, config)
@@ -97,12 +104,13 @@ export async function getAboutPageData() {
   return await strapiGetRequest(url, params)
 }
 
-export async function getProjectsData() {
+export async function getProjectsData(filteredTypes?: string[]) {
   const url = '/api/projects'
 
   const params = {
     'populate[previewImage]': true,
     'populate[project_types]': true,
+    ...(filteredTypes?.length && { type: JSON.stringify(filteredTypes) }),
   }
 
   return await strapiGetRequest(url, params)
@@ -120,12 +128,13 @@ export async function getProjectsPageData() {
   return await strapiGetRequest(url)
 }
 
-export async function getServicesData() {
+export async function getServicesData(filteredTypes?: string[]) {
   const url = '/api/services'
 
   const params = {
     'populate[previewImage]': true,
     'populate[service_types]': true,
+    ...(filteredTypes?.length && { type: JSON.stringify(filteredTypes) }),
   }
 
   return await strapiGetRequest(url, params)
