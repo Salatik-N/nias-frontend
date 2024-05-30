@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useSearchParams } from 'next/navigation'
 import MainCard from '@/components/custom/MainCard'
 import MainFilter from '@/components/custom/MainFilter'
 import {
@@ -40,34 +41,64 @@ export default function ProjectsRoute() {
   const [projectsPageData, setProjectsPageData] = useState<ProjectsPage>(Object)
   const [projectsData, setProjectsData] = useState<Project[]>([])
   const [projectTypes, setProjectTypes] = useState<ProjectTypes>(Object)
+  const [isFetching, setIsFetching] = useState(true)
+
+  const searchParams = useSearchParams()
+
+  const fetchInitialData = async () => {
+    const projectsPageData = await getProjectsPageData()
+    setProjectsPageData(projectsPageData)
+    const projectTypes = await getProjectTypes()
+    setProjectTypes(projectTypes)
+  }
+
+  const fetchProjectsData = async (types?: string[]) => {
+    const projectsData = await getProjectsData(types)
+    setProjectsData(projectsData)
+  }
 
   useEffect(() => {
     const fetchData = async () => {
-      const projectsPageData = await getProjectsPageData()
-      setProjectsPageData(projectsPageData)
-      const projectsData = await getProjectsData()
-      setProjectsData(projectsData)
-      const projectTypes = await getProjectTypes()
-      setProjectTypes(projectTypes)
+      await fetchInitialData()
+      const typesQuery = searchParams.get('type')
+      const types = typesQuery ? JSON.parse(typesQuery) : []
+      await fetchProjectsData(types)
+      setIsFetching(false)
     }
 
     fetchData()
   }, [])
 
+  const handleApply = async (selectedTypes: string[]) => {
+    setIsFetching(true)
+    await fetchProjectsData(selectedTypes)
+    setIsFetching(false)
+  }
+
+  const renderContent = () => {
+    if (isFetching) {
+      return <Loader theme="light" width={50} height={50} />
+    }
+
+    if (projectsData.length > 0) {
+      return projectsData.map((card) => (
+        <MainCard key={card.id} card={card} type="project" />
+      ))
+    }
+
+    return <h2>Not found</h2>
+  }
+
   return (
     <Container>
       <h1 className="visuallyhidden">hiden title</h1>
       <div className="card-block">
-        <MainFilter filterTypes={projectTypes} type="project" />
-        <div className="card-list">
-          {projectsData?.length ? (
-            projectsData.map((card) => (
-              <MainCard key={card.id} card={card} type="project" />
-            ))
-          ) : (
-            <Loader theme="light" width={50} height={50} />
-          )}
-        </div>
+        <MainFilter
+          filterTypes={projectTypes}
+          onApply={handleApply}
+          type="projects"
+        />
+        <div className="card-list">{renderContent()}</div>
       </div>
     </Container>
   )
